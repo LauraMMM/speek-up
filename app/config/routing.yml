@@ -1,7 +1,0 @@
-acme_speek_up_mongo:
-    resource: "@AcmeSpeekUpMongoBundle/Resources/config/routing.php"
-    prefix:   /
-
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
