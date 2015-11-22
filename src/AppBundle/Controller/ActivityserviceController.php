@@ -139,6 +139,8 @@ class ActivityserviceController extends Controller
         $activitiesResponse = CustomUtils::getCollectionObjectsAsArray($doctrineMongo,"Activity",array("eventId" => $eventId));
 
         //perform an ugly extra step to remove expired activities instead of defining a much more ugly cron to do the job
+        //use an ugly index to keep cursor of this array to update voted tag for Dan
+        $arrayIndex = 0;
         foreach($activitiesResponse as $activityArray)
         {
             //test if activity is expired
@@ -149,12 +151,17 @@ class ActivityserviceController extends Controller
             }
             else
             {
-                if (in_array($userId,$activityArray["voters"])
+                //test if current user voted on the suggestion
+                if (in_array($userId,$activityArray["voters"]))
                 {
-
+                    $activitiesResponse[$arrayIndex]["voted"] = "yes";
                 }
-
+                else
+                {
+                    $activitiesResponse[$arrayIndex]["voted"] = "no";
+                }
             }
+            $arrayIndex++;
         }
 
         //render json response - all activities

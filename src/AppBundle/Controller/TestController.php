@@ -129,7 +129,7 @@ class TestController extends Controller
     {
         $userId = "fbId12345";
         $eventId = "fbEventId1";
-        $textRef = "JOS PONTA 3";
+        $textRef = "JOS PONTA 4";
 
         $client = new Client($this->get('kernel'));
         $client->request('POST','/activityservice/add',array(
@@ -149,7 +149,7 @@ class TestController extends Controller
     public function activityservicevoteAction(Request $request)
     {
         $userId = "fbId12345.3";
-        $suggestionId = "565135967a6353241c000042";
+        $suggestionId = "565139347a6353241c000044";
         $vote = "yes";
 
         $client = new Client($this->get('kernel'));
