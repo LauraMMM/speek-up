@@ -136,10 +136,10 @@ class ActivityserviceController extends Controller
         $methodResponse = CustomValidator::validateObjectForService($doctrineMongo,"Event",$eventId);
         if ($methodResponse["status"] == "0") return new JsonResponse($methodResponse);
 
-        //get activities
-        $activitiesResponse = CustomUtils::getCollectionObjectsAsArray($doctrineMongo,"Activity",array());
+        //get activities belonging to provided event and not yet expired
+        $activitiesResponse = CustomUtils::getCollectionObjectsAsArray($doctrineMongo,"Activity",array("eventId" => $eventId,"expired" => false));
 
         //render json response - all events
-        return new JsonResponse(array("activties" => $activitiesResponse));
+        return new JsonResponse(array("activities" => $activitiesResponse));
     }
 }

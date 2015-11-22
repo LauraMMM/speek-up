@@ -105,7 +105,7 @@ class TestController extends Controller
      */
     public function activityservicelistAction(Request $request)
     {
-        $userRef = "2";
+        $userRef = "1";
         $eventRef = "1";
         $client = new Client($this->get('kernel'));
         $client->request('POST','/activityservice/list',array(
@@ -137,9 +137,4 @@ class TestController extends Controller
         //print $client->getResponse()->getContent();
         return new JsonResponse(json_decode($client->getResponse()->getContent()));
     }
-
-
-
-
-
 }
