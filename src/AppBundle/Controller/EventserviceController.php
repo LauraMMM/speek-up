@@ -324,6 +324,9 @@ class EventserviceController extends Controller
         $eventsResponse = CustomUtils::getAllCollectionObjectsAsArray($doctrineMongo,"Event");
 
         //render json response - all events
-        return new JsonResponse(array("events" => $eventsResponse));
+        $response["status"] = "1";
+        $response["messages"] = array("Events listed");
+        $response["data"] = array($eventsResponse);
+        return new JsonResponse($response);
     }
 }

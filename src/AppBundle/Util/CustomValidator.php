@@ -78,4 +78,38 @@ class CustomValidator
         }
         return $response;
     }
+
+    /**
+     * Retrieve on record in array and format the response for output as well. Make sure the object has mongo id
+     * @param $doctrineMongo Database connection
+     * @param $collection Table name
+     * @param $collectionId Record id
+     * @return array
+     */
+    public static function validateObjectForServiceById($doctrineMongo,$collection,$collectionId)
+    {
+        //init standard response format
+        $response = array();
+
+        //get repository (table/collection)
+        $objectRepository = $doctrineMongo->getRepository('AcmeSpeekUpMongoBundle:'.$collection);
+
+        //identify object in our database
+        $recordObject = $objectRepository->findOneById($collectionId);
+
+        //test user existence
+        if (!$recordObject)
+        {
+            //if user does not exists return standard error response
+            $response["status"] = "0";
+            $response["messages"] = array("Unknown record in table ".$collection);
+
+        }
+        else
+        {
+            $response["status"] = "1";
+            $response["data"] = $recordObject;
+        }
+        return $response;
+    }
 }

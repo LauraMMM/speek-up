@@ -257,25 +257,6 @@ class Activity
     }
 
     /**
-     * @return array value of this object
-     */
-    public function toArray()
-    {
-        return array(
-            "id" => $this->id,
-            "eventId" => $this->eventId,
-            "userId" => $this->userId,
-            "type" => $this->type,
-            "status" => $this->status,
-            "expireAt" => $this->expireAt,
-            "yesCount" => $this->yesCount,
-            "noCount" => $this->noCount,
-            "text" => $this->text,
-            "voters" => $this->voters,
-        );
-    }
-
-    /**
      * Set userId
      *
      * @param string $userId
@@ -317,5 +298,25 @@ class Activity
     public function getExpired()
     {
         return $this->expired;
+    }
+
+    /**
+     * @return array value of this object
+     */
+    public function toArray()
+    {
+        return array(
+            "id" => $this->id,
+            "eventId" => $this->eventId,
+            "userId" => $this->userId,
+            "type" => $this->type,
+            "status" => $this->status,
+            "expireAt" => $this->expireAt,
+            "yesCount" => $this->yesCount,
+            "noCount" => $this->noCount,
+            "text" => $this->text,
+            "voters" => $this->voters,
+            "expired" => $this->expired,
+        );
     }
 }

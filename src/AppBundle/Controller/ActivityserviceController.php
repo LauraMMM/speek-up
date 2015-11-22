@@ -28,7 +28,7 @@ class ActivityserviceController extends Controller
     }
 
     /**
-     * @Route("/activityservice/add", name="activityservice/add")
+     * @Route("/activityservice/add", name="activityserviceadd")
      */
     public function addAction(Request $request)
     {
@@ -139,7 +139,89 @@ class ActivityserviceController extends Controller
         //get activities belonging to provided event and not yet expired
         $activitiesResponse = CustomUtils::getCollectionObjectsAsArray($doctrineMongo,"Activity",array("eventId" => $eventId,"expired" => false));
 
-        //render json response - all events
-        return new JsonResponse(array("activities" => $activitiesResponse));
+        //render json response - all activities
+        $response["status"] = "1";
+        $response["messages"] = array("Activities listed");
+        $response["data"] = array($activitiesResponse);
+        return new JsonResponse($response);
+    }
+    /**
+     * @Route("/activityservice/voteyes", name="activityservicevoteyes")
+     */
+    public function voteyesAction(Request $request)
+    {
+        //get post data
+        $userId = $request->request->get('userId');
+        $suggestionId = $request->request->get('suggestionId');
+
+        //build validation array
+        $validationArray = array(
+            "userId" => $userId,
+            "suggestionId" => $suggestionId,
+        );
+
+        //simulate some validations :D
+        $methodResponse = CustomValidator::validateEmptyVarsForResponse($validationArray);
+        if (!empty($methodResponse)) return new JsonResponse($methodResponse);
+
+        //retrieve MongoDB object
+        $doctrineMongo = $this->get('doctrine_mongodb');
+
+        //find user and exit controller if failed
+        $methodResponse = CustomValidator::validateObjectForService($doctrineMongo,"User",$userId);
+        if ($methodResponse["status"] == "0") return new JsonResponse($methodResponse);
+
+        //find activity and exit controller if failed
+        $methodResponse = CustomValidator::validateObjectForServiceById($doctrineMongo,"Activity",$suggestionId);
+        if ($methodResponse["status"] == "0") return new JsonResponse($methodResponse);
+
+        //get activity record
+        $currentActivity = $methodResponse["data"];
+
+        //test if suggestion is still available
+        if ($currentActivity->getExpireAt() > time())
+        {
+            $response["status"] = "0";
+            $response["messages"] = array("Suggestion expired");
+            return new JsonResponse($response);
+        }
+
+        //get activity voters
+        $activityVoters = $currentActivity->getVoters();
+
+        //use a var to determine if we require to flush the db and to form user response
+        $wePerformUpdates = false;
+
+        //check if current user is already attending to the event
+        if (!in_array($userId,$activityVoters))
+        {
+            //if not add add event to user and save
+            $activityVoters[] = $userId;
+            $currentActivity->setVoters($activityVoters);
+            $currentActivity->setYesCount($currentActivity->getYesCount() + 1);
+            $doctrineMongo->getManager()->persist($currentActivity);
+
+            //update flag
+            $wePerformUpdates = true;
+        }
+
+        //init final response
+        $response = array();
+        if ($wePerformUpdates === true)
+        {
+            //commit changes
+            $doctrineMongo->getManager()->flush();
+
+            $response["status"] = "1";
+            $response["messages"] = array("Vote saved");
+        }
+        else
+        {
+            $response["status"] = "0";
+            $response["messages"] = array("User already voted to suggestion");
+        }
+
+        //render json response
+        return new JsonResponse($response);
     }
 }

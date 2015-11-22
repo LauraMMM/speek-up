@@ -137,4 +137,22 @@ class TestController extends Controller
         //print $client->getResponse()->getContent();
         return new JsonResponse(json_decode($client->getResponse()->getContent()));
     }
+
+    /**
+     * @Route("/test/activityservicevoteyes", name="testactivityservicevoteyes")
+     */
+    public function activityservicevoteyesAction(Request $request)
+    {
+        $userRef = "2";
+        $suggestionId = "565108f87a6353c42200002c";
+
+        $client = new Client($this->get('kernel'));
+        $client->request('POST','/activityservice/voteyes',array(
+            "userId" => "fb".$userRef,
+            "suggestionId" => $suggestionId,
+        ));
+
+        //print $client->getResponse()->getContent();
+        return new JsonResponse(json_decode($client->getResponse()->getContent()));
+    }
 }
