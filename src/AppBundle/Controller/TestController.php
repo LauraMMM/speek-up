@@ -31,18 +31,16 @@ class TestController extends Controller
      */
     public function eventserviceregisterAction(Request $request)
     {
-        $userId = "fbId12345";
-        $eventId = "fbEventId1";
         $client = new Client($this->get('kernel'));
         $client->request('POST','/eventservice/register',array(
-            "userId" => $userId,
-            "fbId" => $eventId,
-            "fbTitle" => "Protest anti ponta",
+            "userId" => "fbId12345.2",
+            "fbId" => "fbEventId.1",
+            "fbTitle" => "Protest PUIE MONTA",
             "fbDescription" => "Descriere protest`",
-            "fbAvatar" => "link avatr protest",
-            "fbCover" => "link poza portest",
+            "fbAvatar" => "link avatar protest",
+            "fbCover" => "link poza protest",
             "fbStartTime" => time(),
-            "fbEndTime" => time() + (1000 * 60 * 60 * 5), //5h
+            "fbEndTime" => time() + (60 * 60 * 2), //2h
             "fbLocationName" => "Universitate",
             "fbLatitude" => "lat",
             "fbLongitude" => "long",
