@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        applicationId "ro.hd.speekup"
+        minSdkVersion 17
+        targetSdkVersion 22
+        versionCode 1
+        versionName "0.1"
+        buildConfigField "String", "SERVER_URL", "\"http://192.168.2.237/speekup/web\""
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile 'com.google.android.gms:play-services-gcm:8.3.0'
+    compile 'com.google.android.gms:play-services-location:8.3.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.6.0'
+    compile 'de.hdodenhof:circleimageview:1.3.0'
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+    compile 'com.github.kevinsawicki:http-request:6.0'
+}

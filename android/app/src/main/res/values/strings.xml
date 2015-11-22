@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Speek Up</string>
+
+    <string name="facebook_app_id">912021652185572</string>
+
+    <string name="title_activity_login">Login with Facebook</string>
+    <string name="title_activity_events">Speek Up</string>
+    <string name="title_activity_import_event">Import Facebook event</string>
+    <string name="title_activity_add_suggestion">Add suggestion</string>
+
+
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="current_events">Current events</string>
+    <string name="my_events">My events</string>
+
+    <string name="yesterday">yesterday</string>
+    <string name="today">today</string>
+    <string name="title_activity_event_description">EventDescriptionActivity</string>
+    <string name="event_date">Event date: %s</string>
+    <string name="starts_at">Starts at: %s</string>
+    <string name="going">Going: %s</string>
+    <string name="attend_event">Attend event</string>
+    <string name="unattend_event">Unattend event</string>
+
+    <string name="tab_speak">SpeekUp</string>
+    <string name="tab_move">Location</string>
+    <string name="save">Save</string>
+    <string name="select_type">Select suggestion type</string>
+    <string name="type_speek">Shout</string>
+    <string name="type_location">Location</string>
+    <string name="add_suggestion_no_type_error">Please select a type</string>
+    <string name="add_suggestion_no_message_error">Please enter the suggestion text</string>
+
+
+</resources>

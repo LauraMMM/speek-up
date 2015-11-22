@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="65dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="ro.hd.speekup.activities.EventDescriptionActivity"
+    tools:showIn="@layout/activity_event_description">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/text_margin">
+
+        <TextView
+            android:id="@+id/text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/event_date"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/text_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/starts_at"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/text_going"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/going"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/text_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp" />
+
+        <Button
+            android:id="@+id/button_attend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/attend_event"
+            android:backgroundTint="@color/accent"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:onClick="attendClick"
+            />
+
+        <Button
+            android:id="@+id/button_unattend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unattend_event"
+            android:backgroundTint="@color/accent"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            android:onClick="unattendClick"
+            />
+
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

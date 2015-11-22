@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ro.hd.speekup">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- ask, 4.4.4 needs it, 5.1 works without -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- ask -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <permission
+        android:name="ro.hd.speekup.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="ro.hd.speekup.permission.C2D_MESSAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBOfgzLnGOMB9-iKI01KeOwWo7Ai7yXH8M" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity android:name=".activities.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".receivers.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.example.gcm" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".services.GcmIntentService" />
+
+        <activity
+            android:name=".activities.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme" />
+
+        <service
+            android:name=".services.ApiManagerService"
+            android:exported="false" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".activities.EventsActivity"
+            android:label="@string/title_activity_events"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.ImportEventActivity"
+            android:label="@string/title_activity_import_event"
+            android:parentActivityName=".activities.EventsActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ro.hd.speekup.activities.EventsActivity" />
+        </activity>
+        <activity
+            android:name=".activities.EventDescriptionActivity"
+            android:label="@string/title_activity_event_description"
+            android:parentActivityName=".activities.EventsActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ro.hd.speekup.activities.EventsActivity" />
+        </activity>
+        <activity
+            android:name=".activities.SuggestionActivity"
+            android:theme="@style/AppTheme"
+            >
+            <intent-filter>
+                <action android:name="ro.hd.speekup.SuggestionActivity" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ro.hd.speekup.activities.EventsActivity" />
+            </activity>
+
+        <activity
+            android:name=".activities.AddSuggestionActivity"
+            android:label="@string/title_activity_add_suggestion"
+            android:parentActivityName=".activities.SuggestionActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ro.hd.speekup.activities.SuggestionActivity" />
+        </activity>
+
+
+
+    </application>
+
+</manifest>
