@@ -86,10 +86,9 @@ class ActivityserviceController extends Controller
             $newSuggestion->setText($text);
             $newSuggestion->setType($type);
             $newSuggestion->setStatus("voting");
-            $newSuggestion->setExpireAt(time() + (1000 * 60 * 5)); //5 min
+            $newSuggestion->setExpireAt(time() + (60 * 5)); //5 min
             $newSuggestion->setYesCount(0);
             $newSuggestion->setNoCount(0);
-            $newSuggestion->setExpired(false);
 
             //save suggestion
             $doctrineMongo->getManager()->persist($newSuggestion);
@@ -147,6 +146,14 @@ class ActivityserviceController extends Controller
             {
                 //delete the activity
                 CustomUtils::deleteCollectionObjectById($doctrineMongo,"Activity",$activityArray["id"]);
+            }
+            else
+            {
+                if (in_array($userId,$activityArray["voters"])
+                {
+
+                }
+
             }
         }
 
@@ -239,14 +246,18 @@ class ActivityserviceController extends Controller
             }
 
             //if number of voters is bigger than half of the people attending at the event
-            if (count($activityVoters) > intval($currentEvent->getLocalCount()/2))
+            //and of course we have more then 3 voters TODO change to more when more users will use the app
+            if (
+                    (count($activityVoters) >= 3) &&
+                    (count($activityVoters) > intval($currentEvent->getLocalCount()/2))
+                )
             {
                 //test to see if we have a winner
                 if ($currentActivity->getYesCount() > $currentActivity->getNoCount())
                 {
-                    //set the suggestion to winner and set the expiration time to 30 seconds
+                    //set the suggestion to winner and set the expiration time to 60 seconds
                     $currentActivity->setStatus("winner");
-                    $currentActivity->setExpireAt(time() + (1000 * 30));
+                    $currentActivity->setExpireAt(time() + 60);
                 }
             }
             //save suggestion vote and commit

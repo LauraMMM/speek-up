@@ -280,7 +280,14 @@ class Activity
      */
     public function isExpired()
     {
-        return ($this->getExpireAt() < time());
+        if ($this->getExpireAt() < time())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -295,11 +302,15 @@ class Activity
             "type" => $this->type,
             "status" => $this->status,
             "expireAt" => $this->expireAt,
+            "expireAtFormatted" => date ( "Y-m-d H:i:s", $this->expireAt ),
+            "currentTime" => time(),
+            "currentTimeFormatted" => date ( "Y-m-d H:i:s", time() ),
             "yesCount" => $this->yesCount,
             "noCount" => $this->noCount,
             "text" => $this->text,
             "voters" => $this->voters,
             "expired" => $this->isExpired(),
+
         );
     }
 }

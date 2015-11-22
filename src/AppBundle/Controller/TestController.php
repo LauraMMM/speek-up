@@ -16,7 +16,7 @@ class TestController extends Controller
     {
         $client = new Client($this->get('kernel'));
         $client->request('POST','/userservice/login',array(
-            "fbId" => "fbId12345",
+            "fbId" => "fbId12345.3",
             "fbName" => "Alin Iftemi",
             "fbAvatar" => "fbAvatarLink12345",
             "deviceId" => "userDeviceId12345",
@@ -57,12 +57,12 @@ class TestController extends Controller
      */
     public function eventserviceattendAction(Request $request)
     {
-        $userRef = "3";
-        $eventRef = "4";
+        $userId = "fbId12345";
+        $eventId = "fbEventId1";
         $client = new Client($this->get('kernel'));
         $client->request('POST','/eventservice/attend',array(
-            "userId" => "fb".$userRef,
-            "eventId" => "eventFb".$eventRef,
+            "userId" => $userId,
+            "eventId" => $eventId,
         ));
         //print $client->getResponse()->getContent();
         return new JsonResponse(json_decode($client->getResponse()->getContent()));
@@ -73,12 +73,12 @@ class TestController extends Controller
      */
     public function eventserviceunattendAction(Request $request)
     {
-        $userRef = "2";
-        $eventRef = "1";
+        $userId = "fbId12345";
+        $eventId = "fbEventId1";
         $client = new Client($this->get('kernel'));
         $client->request('POST','/eventservice/unattend',array(
-            "userId" => "fb".$userRef,
-            "eventId" => "eventFb".$eventRef,
+            "userId" => $userId,
+            "eventId" => $eventId,
         ));
         //print $client->getResponse()->getContent();
         return new JsonResponse(json_decode($client->getResponse()->getContent()));
@@ -106,17 +106,18 @@ class TestController extends Controller
      */
     public function activityservicelistAction(Request $request)
     {
-        $userRef = "1";
-        $eventRef = "1";
+        $userId = "fbId12345";
+        $eventId = "fbEventId1";
+
         $client = new Client($this->get('kernel'));
         $client->request('POST','/activityservice/list',array(
-            "userId" => "fb".$userRef,
-            "eventId" => "eventFb".$eventRef,
+            "userId" => $userId,
+            "eventId" => $eventId,
         ));
 
-        //print "<pre>";
-        //print_r(json_decode($client->getResponse()->getContent(),true));
-        //print "</pre>";
+        print "<pre>";
+        print_r(json_decode($client->getResponse()->getContent(),true));
+        print "</pre>";
         //print $client->getResponse()->getContent();
         return new JsonResponse(json_decode($client->getResponse()->getContent()));
     }
@@ -126,15 +127,15 @@ class TestController extends Controller
      */
     public function activityserviceaddAction(Request $request)
     {
-        $userRef = "2";
-        $eventRef = "1";
-        $textRef = "1";
+        $userId = "fbId12345";
+        $eventId = "fbEventId1";
+        $textRef = "JOS PONTA 3";
 
         $client = new Client($this->get('kernel'));
         $client->request('POST','/activityservice/add',array(
-            "userId" => "fb".$userRef,
-            "eventId" => "eventFb".$eventRef,
-            "text" => "Jos PONTA ".$textRef,
+            "userId" => $userId,
+            "eventId" => $eventId,
+            "text" => $textRef,
             "type" => "speak",
         ));
 
@@ -143,17 +144,19 @@ class TestController extends Controller
     }
 
     /**
-     * @Route("/test/activityservicevoteyes", name="testactivityservicevoteyes")
+     * @Route("/test/activityservicevote", name="testactivityservicevote")
      */
-    public function activityservicevoteyesAction(Request $request)
+    public function activityservicevoteAction(Request $request)
     {
-        $userRef = "2";
-        $suggestionId = "565108f87a6353c42200002c";
+        $userId = "fbId12345.3";
+        $suggestionId = "565135967a6353241c000042";
+        $vote = "yes";
 
         $client = new Client($this->get('kernel'));
-        $client->request('POST','/activityservice/voteyes',array(
-            "userId" => "fb".$userRef,
+        $client->request('POST','/activityservice/vote',array(
+            "userId" => $userId,
             "suggestionId" => $suggestionId,
+            "vote" => $vote,
         ));
 
         //print $client->getResponse()->getContent();
