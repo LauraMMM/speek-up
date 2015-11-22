@@ -61,11 +61,6 @@ class Activity
     protected $text;
 
     /**
-     * @MongoDB\Boolean
-     */
-    protected $expired;
-
-    /**
      * @MongoDB\Collection
      */
     protected $voters = array();
@@ -279,25 +274,13 @@ class Activity
     }
 
     /**
-     * Set expired
+     * Is expired
      *
-     * @param boolean $expired
-     * @return self
+     * @return boolean
      */
-    public function setExpired($expired)
+    public function isExpired()
     {
-        $this->expired = $expired;
-        return $this;
-    }
-
-    /**
-     * Get expired
-     *
-     * @return boolean $expired
-     */
-    public function getExpired()
-    {
-        return $this->expired;
+        return ($this->getExpireAt() < time());
     }
 
     /**
@@ -316,7 +299,7 @@ class Activity
             "noCount" => $this->noCount,
             "text" => $this->text,
             "voters" => $this->voters,
-            "expired" => $this->expired,
+            "expired" => $this->isExpired(),
         );
     }
 }

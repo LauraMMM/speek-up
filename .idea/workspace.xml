@@ -22,75 +22,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ActivityserviceController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ActivityserviceController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38008416">
-              <caret line="183" column="12" selection-start-line="183" selection-start-column="12" selection-end-line="183" selection-end-column="12" />
-              <folding>
-                <element signature="e#127#158#0#PHP" expanded="true" />
-                <element signature="e#3917#5498#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Activity.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Acme/SpeekUpMongoBundle/Document/Activity.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-88.23077">
-              <caret line="322" column="0" selection-start-line="322" selection-start-column="0" selection-end-line="322" selection-end-column="0" />
-              <folding>
-                <element signature="e#6#92#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="EventserviceController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/EventserviceController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.423077">
-              <caret line="195" column="0" selection-start-line="176" selection-start-column="7" selection-end-line="195" selection-end-column="0" />
+            <state vertical-scroll-proportion="-22.846153">
+              <caret line="300" column="25" selection-start-line="300" selection-start-column="25" selection-end-line="300" selection-end-column="25" />
               <folding>
                 <element signature="e#39#98#0#PHP" expanded="true" />
                 <element signature="e#495#623#0#PHP" expanded="false" />
                 <element signature="e#715#3637#0#PHP" expanded="false" />
-                <element signature="e#6809#10777#0#PHP" expanded="false" />
-                <element signature="e#10860#12012#0#PHP" expanded="false" />
+                <element signature="e#3724#6718#0#PHP" expanded="false" />
+                <element signature="e#6809#10895#0#PHP" expanded="false" />
+                <element signature="e#10978#12123#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomValidator.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Util/CustomValidator.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.384615">
-              <caret line="88" column="55" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomUtils.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Util/CustomUtils.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.038462">
-              <caret line="47" column="53" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/TestController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.307692">
-              <caret line="146" column="49" selection-start-line="146" selection-start-column="49" selection-end-line="146" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.57223004">
+              <caret line="94" column="24" selection-start-line="94" selection-start-column="24" selection-end-line="94" selection-end-column="24" />
               <folding>
                 <element signature="e#39#98#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Event.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Acme/SpeekUpMongoBundle/Document/Event.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.307692">
+              <caret line="403" column="41" selection-start-line="403" selection-start-column="41" selection-end-line="403" selection-end-column="41" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -113,21 +79,21 @@
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Util/Calculator.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Tests/Util/CalculatorTest.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Tests/Controller/UserserviceControllerTest.php" />
         <option value="$PROJECT_DIR$/app/logs/test.log" />
         <option value="$PROJECT_DIR$/app/logs/prod.log" />
         <option value="$PROJECT_DIR$/src/Acme/SpeekUpMongoBundle/Document/User.php" />
         <option value="$PROJECT_DIR$/app/logs/dev.log" />
-        <option value="$PROJECT_DIR$/src/Acme/SpeekUpMongoBundle/Document/Event.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/UserserviceController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Util/CustomUtils.php" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Util/CustomValidator.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/EventserviceController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/TestController.php" />
+        <option value="$PROJECT_DIR$/src/Acme/SpeekUpMongoBundle/Document/Event.php" />
         <option value="$PROJECT_DIR$/src/Acme/SpeekUpMongoBundle/Document/Activity.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Util/CustomUtils.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/EventserviceController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ActivityserviceController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Tests/Controller/UserserviceControllerTest.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/TestController.php" />
       </list>
     </option>
   </component>
@@ -742,14 +708,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/UserserviceControllerTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35764375">
-          <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Util/Calculator.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23842917">
@@ -784,16 +742,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Acme/SpeekUpMongoBundle/Document/Event.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66619915">
-          <caret line="410" column="7" selection-start-line="410" selection-start-column="7" selection-end-line="410" selection-end-column="7" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47090665">
@@ -813,63 +761,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Util/CustomUtils.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.038462">
-          <caret line="47" column="53" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Util/CustomValidator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.384615">
-          <caret line="88" column="55" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="55" />
+        <state vertical-scroll-proportion="1.2384292">
+          <caret line="97" column="54" selection-start-line="97" selection-start-column="43" selection-end-line="97" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/TestController.php">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Util/CustomUtils.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.307692">
-          <caret line="146" column="49" selection-start-line="146" selection-start-column="49" selection-end-line="146" selection-end-column="49" />
-          <folding>
-            <element signature="e#39#98#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/EventserviceController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.423077">
-          <caret line="195" column="0" selection-start-line="176" selection-start-column="7" selection-end-line="195" selection-end-column="0" />
-          <folding>
-            <element signature="e#39#98#0#PHP" expanded="true" />
-            <element signature="e#495#623#0#PHP" expanded="false" />
-            <element signature="e#715#3637#0#PHP" expanded="false" />
-            <element signature="e#6809#10777#0#PHP" expanded="false" />
-            <element signature="e#10860#12012#0#PHP" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.33380085">
+          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Acme/SpeekUpMongoBundle/Document/Activity.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-88.23077">
-          <caret line="322" column="0" selection-start-line="322" selection-start-column="0" selection-end-line="322" selection-end-column="0" />
+        <state vertical-scroll-proportion="-12.384615">
+          <caret line="138" column="29" selection-start-line="138" selection-start-column="20" selection-end-line="138" selection-end-column="29" />
           <folding>
             <element signature="e#6#92#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/UserserviceControllerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.713885">
+          <caret line="51" column="64" selection-start-line="51" selection-start-column="64" selection-end-line="51" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ActivityserviceController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38008416">
-          <caret line="183" column="12" selection-start-line="183" selection-start-column="12" selection-end-line="183" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.33239833">
+          <caret line="253" column="50" selection-start-line="253" selection-start-column="50" selection-end-line="253" selection-end-column="50" />
           <folding>
             <element signature="e#127#158#0#PHP" expanded="true" />
-            <element signature="e#3917#5498#0#PHP" expanded="false" />
+            <element signature="e#3900#5908#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Acme/SpeekUpMongoBundle/Document/Event.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.307692">
+          <caret line="403" column="41" selection-start-line="403" selection-start-column="41" selection-end-line="403" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/EventserviceController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.846153">
+          <caret line="300" column="25" selection-start-line="300" selection-start-column="25" selection-end-line="300" selection-end-column="25" />
+          <folding>
+            <element signature="e#39#98#0#PHP" expanded="true" />
+            <element signature="e#495#623#0#PHP" expanded="false" />
+            <element signature="e#715#3637#0#PHP" expanded="false" />
+            <element signature="e#3724#6718#0#PHP" expanded="false" />
+            <element signature="e#6809#10895#0#PHP" expanded="false" />
+            <element signature="e#10978#12123#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/TestController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57223004">
+          <caret line="94" column="24" selection-start-line="94" selection-start-column="24" selection-end-line="94" selection-end-column="24" />
+          <folding>
+            <element signature="e#39#98#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

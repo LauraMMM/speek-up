@@ -61,4 +61,24 @@ class CustomUtils
         //return all objects as array
         return $responseArray;
     }
+
+    public static function deleteCollectionObjectById($doctrineMongo,$collection,$collectionId)
+    {
+        //get collection repository (table/collection)
+        $collectionRepository = $doctrineMongo->getRepository('AcmeSpeekUpMongoBundle:'.$collection);
+
+        // find object
+        $object = $collectionRepository->findOneById($collectionId);
+        if ($object)
+        {
+            //delete the object from database
+            $doctrineMongo->getManager()->remove($object);
+        }
+
+        //commit the delete
+        $doctrineMongo->getManager()->flush();
+
+        //do not return anything this time - just do it without write concern
+    }
+
 }

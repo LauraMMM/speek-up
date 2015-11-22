@@ -10,25 +10,47 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 class UserserviceControllerTest extends WebTestCase
 {
-    public function testLogin()
+    public function testCreateLogin()
     {
         //create http client
         $client = static::createClient();
-        //$crawler = $client->request('GET', '/post/hello-world');
 
         //call user service login method
         $crawler = $client->request('POST','/userservice/login', array(
-            "fbId" => "fbId",
+            "fbId" => "fbId12345",
             "fbName" => "Alin Iftemi",
-            "fbAvatar" => "link to avatar",
-            "deviceId" => "1234567890",
+            "fbAvatar" => "fbAvatarLink12345",
+            "deviceId" => "userDeviceId12345",
         ));
 
         //get the actual response
         $actual = $client->getResponse()->getContent();
 
         //define expected result
-        $expected = '{"status":"0","message":"Invalid param fbId"}';
+        $expected = '{"status":"1","messages":["User created"],"data":{"userId":"fbId12345"}}';
+
+        //check values
+        $this->assertEquals($expected,$actual);
+    }
+
+    public function testUpdateLogin()
+    {
+        //create http client
+        $client = static::createClient();
+
+        //call user service login method
+        $crawler = $client->request('POST','/userservice/login', array(
+            "fbId" => "fbId12345",
+            "fbName" => "Alin Iftemi",
+            "fbAvatar" => "fbAvatarLink12345",
+            "deviceId" => "userDeviceId12345",
+        ));
+
+        //get the actual response
+        $actual = $client->getResponse()->getContent();
+
+        //define expected result - this time we update user data
+        $expected = '{"status":"1","messages":["User updated"],"data":{"userId":"fbId12345"}}';
 
         //check values
         $this->assertEquals($expected,$actual);

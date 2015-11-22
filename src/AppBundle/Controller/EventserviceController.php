@@ -209,7 +209,7 @@ class EventserviceController extends Controller
         $fbAvatar = $request->request->get('fbAvatar');
         $fbCover = $request->request->get('fbCover');
         $fbStartTime = $request->request->get('fbStartTime');
-        $fbEndTime = $request->request->get('fbEndTime');
+        $fbEndTime = (empty($request->request->get('fbEndTime')) ? (time() + (1000 * 60 * 60 * 2)) : $request->request->get('fbEndTime')) ; //if not specified end time for event add 2hours, we are reasonable people, we go to beers after
         $fbLocationName = $request->request->get('fbLocationName');
         $fbLatitude = $request->request->get('fbLatitude');
         $fbLongitude = $request->request->get('fbLongitude');
@@ -279,7 +279,6 @@ class EventserviceController extends Controller
             $event->setFbLatitude($fbLatitude);
             $event->setFbLongitude($fbLongitude);
             $event->setFbCount($fbCount);
-            $event->setLocalCount(0); //set local count to 0
 
             //save event
             $doctrineMongo->getManager()->persist($event);
@@ -326,7 +325,7 @@ class EventserviceController extends Controller
         //render json response - all events
         $response["status"] = "1";
         $response["messages"] = array("Events listed");
-        $response["data"] = array($eventsResponse);
+        $response["data"] = $eventsResponse;
         return new JsonResponse($response);
     }
 }

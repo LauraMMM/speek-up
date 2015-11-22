@@ -65,14 +65,14 @@ class ActivityserviceController extends Controller
         $methodResponse = CustomValidator::validateObjectForService($doctrineMongo,"Event",$eventId);
         if ($methodResponse["status"] == "0") return new JsonResponse($methodResponse);
 
-        //get possible existing activties (table/collection)
-        $existingActivties = CustomUtils::getCollectionObjectsAsArray($doctrineMongo,"Activity",array("text" => $text, "expired" == false));
+        //get possible existing activities (table/collection)
+        $existingActivities = CustomUtils::getCollectionObjectsAsArray($doctrineMongo,"Activity",array("text" => $text));
 
         //init response
         $response = array();
 
         //test user existence
-        if (count($existingActivties) > 0)
+        if (count($existingActivities) > 0)
         {
             //if user does not exists return standard error response
             $response["status"] = "0";
@@ -137,27 +137,41 @@ class ActivityserviceController extends Controller
         if ($methodResponse["status"] == "0") return new JsonResponse($methodResponse);
 
         //get activities belonging to provided event and not yet expired
-        $activitiesResponse = CustomUtils::getCollectionObjectsAsArray($doctrineMongo,"Activity",array("eventId" => $eventId,"expired" => false));
+        $activitiesResponse = CustomUtils::getCollectionObjectsAsArray($doctrineMongo,"Activity",array("eventId" => $eventId));
+
+        //perform an ugly extra step to remove expired activities instead of defining a much more ugly cron to do the job
+        foreach($activitiesResponse as $activityArray)
+        {
+            //test if activity is expired
+            if($activityArray["expired"])
+            {
+                //delete the activity
+                CustomUtils::deleteCollectionObjectById($doctrineMongo,"Activity",$activityArray["id"]);
+            }
+        }
 
         //render json response - all activities
         $response["status"] = "1";
         $response["messages"] = array("Activities listed");
-        $response["data"] = array($activitiesResponse);
+        $response["data"] = $activitiesResponse;
         return new JsonResponse($response);
     }
+
     /**
-     * @Route("/activityservice/voteyes", name="activityservicevoteyes")
+     * @Route("/activityservice/vote", name="activityservicevote")
      */
-    public function voteyesAction(Request $request)
+    public function voteAction(Request $request)
     {
         //get post data
         $userId = $request->request->get('userId');
         $suggestionId = $request->request->get('suggestionId');
+        $vote = $request->request->get('vote');
 
         //build validation array
         $validationArray = array(
             "userId" => $userId,
             "suggestionId" => $suggestionId,
+            "vote" => $vote,
         );
 
         //simulate some validations :D
@@ -178,11 +192,26 @@ class ActivityserviceController extends Controller
         //get activity record
         $currentActivity = $methodResponse["data"];
 
-        //test if suggestion is still available
-        if ($currentActivity->getExpireAt() > time())
+        //find event and exit controller if failed
+        $methodResponse = CustomValidator::validateObjectForService($doctrineMongo,"Event",$currentActivity->getEventId());
+        if ($methodResponse["status"] == "0") return new JsonResponse($methodResponse);
+
+        //get activity event record
+        $currentEvent = $methodResponse["data"];
+
+        //test if suggestion is still available by expired
+        if ($currentActivity->isExpired())
         {
             $response["status"] = "0";
             $response["messages"] = array("Suggestion expired");
+            return new JsonResponse($response);
+        }
+
+        //test if suggestion is a winner, then there is no need for votes
+        if ($currentActivity->getStatus() == "winner")
+        {
+            $response["status"] = "0";
+            $response["messages"] = array("Suggestion is a winner already");
             return new JsonResponse($response);
         }
 
@@ -198,8 +227,31 @@ class ActivityserviceController extends Controller
             //if not add add event to user and save
             $activityVoters[] = $userId;
             $currentActivity->setVoters($activityVoters);
-            $currentActivity->setYesCount($currentActivity->getYesCount() + 1);
+
+            //register user vote
+            if ($vote == "yes")
+            {
+                $currentActivity->setYesCount($currentActivity->getYesCount() + 1);
+            }
+            else
+            {
+                $currentActivity->setNoCount($currentActivity->getNoCount() + 1);
+            }
+
+            //if number of voters is bigger than half of the people attending at the event
+            if (count($activityVoters) > intval($currentEvent->getLocalCount()/2))
+            {
+                //test to see if we have a winner
+                if ($currentActivity->getYesCount() > $currentActivity->getNoCount())
+                {
+                    //set the suggestion to winner and set the expiration time to 30 seconds
+                    $currentActivity->setStatus("winner");
+                    $currentActivity->setExpireAt(time() + (1000 * 30));
+                }
+            }
+            //save suggestion vote and commit
             $doctrineMongo->getManager()->persist($currentActivity);
+            $doctrineMongo->getManager()->flush();
 
             //update flag
             $wePerformUpdates = true;
@@ -209,9 +261,6 @@ class ActivityserviceController extends Controller
         $response = array();
         if ($wePerformUpdates === true)
         {
-            //commit changes
-            $doctrineMongo->getManager()->flush();
-
             $response["status"] = "1";
             $response["messages"] = array("Vote saved");
         }

@@ -81,11 +81,6 @@ class Event
     protected $fbCount;
 
     /**
-     * @MongoDB\Int
-     */
-    protected $localCount;
-
-    /**
      * @MongoDB\Collection
      */
     protected $attendees = array();
@@ -343,28 +338,6 @@ class Event
     }
 
     /**
-     * Set localCount
-     *
-     * @param int $localCount
-     * @return self
-     */
-    public function setLocalCount($localCount)
-    {
-        $this->localCount = $localCount;
-        return $this;
-    }
-
-    /**
-     * Get localCount
-     *
-     * @return int $localCount
-     */
-    public function getLocalCount()
-    {
-        return $this->localCount;
-    }
-
-    /**
      * Set userId
      *
      * @param string $userId
@@ -409,6 +382,14 @@ class Event
     }
 
     /**
+     * Get number of attendees from speekup event
+     */
+    public function getLocalCount()
+    {
+        return count($this->attendees);
+    }
+
+    /**
      * @return array value of this object
      */
     public function toArray()
@@ -426,7 +407,7 @@ class Event
             "fbLatitude" => $this->fbLatitude,
             "fbLongitude" => $this->fbLongitude,
             "fbCount" => $this->fbCount,
-            "localCount" => $this->localCount,
+            "localCount" => $this->getLocalCount(),
             "attendees" => $this->attendees,
         );
     }

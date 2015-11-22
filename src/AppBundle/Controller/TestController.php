@@ -14,13 +14,12 @@ class TestController extends Controller
      */
     public function loginAction(Request $request)
     {
-        $userRef = "3";
         $client = new Client($this->get('kernel'));
         $client->request('POST','/userservice/login',array(
-            "fbId" => "fb".$userRef,
-            "fbName" => "user".$userRef,
-            "fbAvatar" => "avatarLink".$userRef,
-            "deviceId" => "device".$userRef,
+            "fbId" => "fbId12345",
+            "fbName" => "Alin Iftemi",
+            "fbAvatar" => "fbAvatarLink12345",
+            "deviceId" => "userDeviceId12345",
         ));
 
         //print $client->getResponse()->getContent();
@@ -32,12 +31,12 @@ class TestController extends Controller
      */
     public function eventserviceregisterAction(Request $request)
     {
-        $userRef = "2";
-        $eventRef = "5";
+        $userId = "fbId12345";
+        $eventId = "fbEventId1";
         $client = new Client($this->get('kernel'));
         $client->request('POST','/eventservice/register',array(
-            "userId" => "fb".$userRef,
-            "fbId" => "eventFb".$eventRef,
+            "userId" => $userId,
+            "fbId" => $eventId,
             "fbTitle" => "Protest anti ponta",
             "fbDescription" => "Descriere protest`",
             "fbAvatar" => "link avatr protest",
@@ -90,12 +89,14 @@ class TestController extends Controller
      */
     public function eventservicelistAction(Request $request)
     {
-        $userRef = "1";
+        $userId = "fbId12345";
         $client = new Client($this->get('kernel'));
         $client->request('POST','/eventservice/list',array(
-            "userId" => "fb".$userRef,
+            "userId" => $userId,
         ));
-
+        print "<pre>";
+        print_r(json_decode($client->getResponse()->getContent(),true));
+        print "</pre>";
         //print $client->getResponse()->getContent();
         return new JsonResponse(json_decode($client->getResponse()->getContent()));
     }
@@ -113,6 +114,9 @@ class TestController extends Controller
             "eventId" => "eventFb".$eventRef,
         ));
 
+        //print "<pre>";
+        //print_r(json_decode($client->getResponse()->getContent(),true));
+        //print "</pre>";
         //print $client->getResponse()->getContent();
         return new JsonResponse(json_decode($client->getResponse()->getContent()));
     }
